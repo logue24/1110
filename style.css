@@ -1,0 +1,470 @@
+/* =========================================================
+   Niên Thiện — style.css
+   Logo: Capitaly Script (đặt file font vào thư mục fonts/)
+   ========================================================= */
+
+/* ---------- Font logo: Capitaly Script ----------
+   Thứ tự thử: font đã cài trên máy -> file trong fonts/.
+   Nếu không tìm thấy, trình duyệt dùng Great Vibes (xem --font-logo). */
+@font-face {
+  font-family: "Capitaly Script";
+  src: local("Capitaly Script"),
+       local("CapitalyScript"),
+       url("fonts/CapitalyScript.woff2") format("woff2"),
+       url("fonts/CapitalyScript.woff") format("woff"),
+       url("fonts/CapitalyScript.ttf") format("truetype"),
+       url("fonts/CapitalyScript.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Biến màu & kiểu chữ ---------- */
+:root {
+  --bg: #FAF6EE;
+  --bg-soft: #F2EBDD;
+  --surface: #FFFFFF;
+  --text: #23201C;
+  --muted: #6B645A;
+  --heading: #1F3D36;
+  --primary: #1F3D36;
+  --on-primary: #FAF6EE;
+  --accent: #B8893A;
+  --line: rgba(35, 32, 28, 0.12);
+  --shadow: 0 10px 30px rgba(31, 61, 54, 0.10);
+  --header-bg: rgba(250, 246, 238, 0.82);
+
+  --font-logo: "Capitaly Script", "Great Vibes", "Dancing Script", cursive;
+  --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --header-h: 68px;
+  --radius: 18px;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0F1613;
+  --bg-soft: #16201C;
+  --surface: #1A2520;
+  --text: #EDE6D8;
+  --muted: #A39B8C;
+  --heading: #F3EBDA;
+  --primary: #D4A64F;
+  --on-primary: #0F1613;
+  --accent: #D4A64F;
+  --line: rgba(237, 230, 216, 0.14);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --header-bg: rgba(15, 22, 19, 0.82);
+}
+
+/* ---------- Nền tảng ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+h1, h2, h3, p { margin: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 5vw, 32px);
+}
+.container.narrow { max-width: 760px; }
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -64px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: 0.9rem;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 12px; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: var(--header-bg);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.site-header.scrolled {
+  border-bottom-color: var(--line);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  font-family: var(--font-logo);
+  font-weight: 400;
+  font-size: 2.1rem;
+  line-height: 1.3;
+  color: var(--heading);
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: auto;
+}
+
+.nav-link {
+  position: relative;
+  padding: 6px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-link:hover,
+.nav-link.active { color: var(--heading); }
+.nav-link:hover::after,
+.nav-link.active::after { transform: scaleX(1); }
+
+.header-actions { display: flex; align-items: center; gap: 4px; }
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: var(--heading);
+  transition: background-color 0.2s ease;
+}
+.icon-btn:hover { background: var(--bg-soft); }
+
+.icon-sun { display: none; }
+:root[data-theme="dark"] .icon-sun { display: block; }
+:root[data-theme="dark"] .icon-moon { display: none; }
+
+.menu-btn { display: none; }
+.menu-lines { position: relative; width: 20px; height: 14px; }
+.menu-lines span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.menu-lines span:nth-child(1) { top: 0; }
+.menu-lines span:nth-child(2) { top: 6px; }
+.menu-lines span:nth-child(3) { top: 12px; }
+.menu-btn[aria-expanded="true"] .menu-lines span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] .menu-lines span:nth-child(2) { opacity: 0; }
+.menu-btn[aria-expanded="true"] .menu-lines span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ---------- Hero ---------- */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
+  padding: 56px 0 72px;
+  text-align: center;
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(184, 137, 58, 0.16), transparent 70%),
+    radial-gradient(50% 40% at 100% 100%, rgba(31, 61, 54, 0.08), transparent 70%);
+}
+:root[data-theme="dark"] .hero {
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(212, 166, 79, 0.14), transparent 70%),
+    radial-gradient(50% 40% at 100% 100%, rgba(207, 227, 219, 0.05), transparent 70%);
+}
+
+.hero-inner { display: flex; flex-direction: column; align-items: center; }
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero-logo {
+  margin-top: 12px;
+  font-family: var(--font-logo);
+  font-weight: 400;
+  font-size: clamp(4rem, 19vw, 9rem);
+  line-height: 1.3;
+  color: var(--heading);
+  overflow-wrap: anywhere;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 22px;
+}
+.ornament span {
+  width: clamp(48px, 14vw, 96px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent));
+}
+.ornament span:last-child { background: linear-gradient(270deg, transparent, var(--accent)); }
+.ornament i {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+
+.hero-tagline {
+  max-width: 28ch;
+  font-size: clamp(1.1rem, 3.4vw, 1.4rem);
+  font-weight: 300;
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* ---------- Nút ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 26px;
+  border-radius: 999px;
+  font-size: 0.96rem;
+  font-weight: 500;
+  border: 1.5px solid transparent;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: var(--shadow);
+}
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-ghost {
+  border-color: var(--line);
+  color: var(--heading);
+}
+.btn-ghost:hover { border-color: var(--accent); background: var(--bg-soft); }
+
+/* ---------- Section ---------- */
+.section { padding: clamp(64px, 11vw, 112px) 0; scroll-margin-top: var(--header-h); }
+.section-soft { background: var(--bg-soft); }
+
+.section-head { margin-bottom: 28px; }
+.section-head.center { text-align: center; margin-bottom: 40px; }
+.section-head h2 {
+  margin-top: 6px;
+  font-size: clamp(1.7rem, 5vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--heading);
+}
+
+.lead {
+  margin-bottom: 18px;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  line-height: 1.65;
+  color: var(--heading);
+}
+#gioi-thieu p:not(.lead):not(.eyebrow) { color: var(--muted); }
+
+/* ---------- Thẻ giá trị ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.card {
+  padding: 28px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card-num {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+.card h3 {
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--heading);
+}
+.card p { color: var(--muted); font-size: 0.97rem; }
+
+/* ---------- Liên hệ ---------- */
+.contact-list { display: grid; gap: 12px; }
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.contact-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+.contact-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.contact-value { color: var(--heading); overflow-wrap: anywhere; }
+
+.contact-empty { color: var(--muted); }
+.contact-actions { margin-top: 24px; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 40px 0 calc(40px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.footer-inner { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.footer-logo {
+  font-family: var(--font-logo);
+  font-size: 2.2rem;
+  line-height: 1.3;
+  color: var(--heading);
+}
+.site-footer p { font-size: 0.85rem; color: var(--muted); }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  z-index: 200;
+  max-width: calc(100% - 32px);
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- Hiệu ứng xuất hiện (chỉ bật khi JS chạy được) ---------- */
+.reveal-on .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-on .reveal.is-visible { opacity: 1; transform: none; }
+
+/* ---------- Di động ---------- */
+@media (max-width: 760px) {
+  .menu-btn { display: inline-flex; }
+
+  .nav {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-left: 0;
+    padding: 8px clamp(16px, 5vw, 32px) 16px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  }
+  .nav.open { opacity: 1; visibility: visible; transform: none; }
+
+  .nav-link { padding: 14px 4px; font-size: 1.05rem; border-bottom: 1px solid var(--line); }
+  .nav-link:last-child { border-bottom: 0; }
+  .nav-link::after { display: none; }
+  .nav-link.active { color: var(--accent); }
+
+  .logo { font-size: 1.9rem; }
+}
+
+/* ---------- Giảm chuyển động ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

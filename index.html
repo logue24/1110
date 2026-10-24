@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Niên Thiện</title>
+  <meta name="description" content="Niên Thiện — thương hiệu của sự tử tế, được vun đắp bền bỉ qua năm tháng.">
+  <meta name="theme-color" content="#FAF6EE">
+  <meta name="color-scheme" content="light dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Niên Thiện">
+  <meta property="og:title" content="Niên Thiện">
+  <meta property="og:description" content="Thương hiệu của sự tử tế, được vun đắp bền bỉ qua năm tháng.">
+  <meta property="og:locale" content="vi_VN">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F3D36'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle' fill='%23D4A64F' font-family='Georgia,serif' font-style='italic'%3ENT%3C/text%3E%3C/svg%3E">
+
+  <!-- Font dự phòng: Great Vibes (hỗ trợ tiếng Việt) dùng khi chưa có file Capitaly Script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Đặt giao diện sáng/tối sớm để tránh bị nháy màn hình khi tải trang -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("nt-theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Bỏ qua, đến phần nội dung</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Niên Thiện — về đầu trang">Niên Thiện</a>
+
+      <nav class="nav" id="nav" aria-label="Điều hướng chính">
+        <a class="nav-link" href="#gioi-thieu">Giới thiệu</a>
+        <a class="nav-link" href="#gia-tri">Giá trị</a>
+        <a class="nav-link" href="#lien-he">Liên hệ</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Chuyển sang giao diện tối" aria-pressed="false">
+          <svg class="icon icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="icon icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="nav">
+          <span class="menu-lines" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Trang chủ -->
+    <section class="hero" id="trang-chu" aria-labelledby="heroTitle">
+      <div class="container hero-inner">
+        <p class="eyebrow reveal">Thương hiệu</p>
+        <h1 class="hero-logo reveal" id="heroTitle">Niên Thiện</h1>
+        <div class="ornament reveal" aria-hidden="true"><span></span><i></i><span></span></div>
+        <p class="hero-tagline reveal">Giữ trọn điều thiện qua từng năm tháng.</p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="#gioi-thieu">Tìm hiểu thêm</a>
+          <a class="btn btn-ghost" href="#lien-he">Liên hệ</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Giới thiệu -->
+    <section class="section" id="gioi-thieu" aria-labelledby="aboutTitle">
+      <div class="container narrow">
+        <header class="section-head reveal">
+          <p class="eyebrow">Câu chuyện</p>
+          <h2 id="aboutTitle">Giới thiệu</h2>
+        </header>
+        <p class="lead reveal">
+          Niên Thiện là cái tên ghép từ hai chữ quen thuộc: “niên” là năm tháng, “thiện” là điều lành, sự tử tế.
+        </p>
+        <p class="reveal">
+          Cái tên nhắc rằng điều tốt đẹp không đến trong một ngày. Nó được vun đắp bền bỉ, từng việc nhỏ, qua thời gian.
+        </p>
+      </div>
+    </section>
+
+    <!-- Giá trị -->
+    <section class="section section-soft" id="gia-tri" aria-labelledby="valuesTitle">
+      <div class="container">
+        <header class="section-head center reveal">
+          <p class="eyebrow">Định hướng</p>
+          <h2 id="valuesTitle">Giá trị cốt lõi</h2>
+        </header>
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card-num" aria-hidden="true">01</span>
+            <h3>Chân thành</h3>
+            <p>Nói đúng, làm đúng, không tô vẽ.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-num" aria-hidden="true">02</span>
+            <h3>Bền bỉ</h3>
+            <p>Làm đều đặn, từng chút một, để giá trị có đủ thời gian lớn lên.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card-num" aria-hidden="true">03</span>
+            <h3>Tử tế</h3>
+            <p>Đặt con người lên trước, bắt đầu từ những việc nhỏ nhất.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Liên hệ -->
+    <section class="section" id="lien-he" aria-labelledby="contactTitle">
+      <div class="container narrow">
+        <header class="section-head reveal">
+          <p class="eyebrow">Kết nối</p>
+          <h2 id="contactTitle">Liên hệ</h2>
+        </header>
+        <div class="contact-list" id="contactList"></div>
+        <p class="contact-empty" id="contactEmpty" hidden>Thông tin liên hệ sẽ sớm được cập nhật.</p>
+        <div class="contact-actions reveal">
+          <button class="btn btn-ghost" id="shareBtn" type="button">Chia sẻ trang này</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">Niên Thiện</span>
+      <p>© <span id="year">2026</span> Niên Thiện. Bảo lưu mọi quyền.</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
